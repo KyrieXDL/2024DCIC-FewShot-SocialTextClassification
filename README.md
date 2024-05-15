@@ -61,11 +61,18 @@ a. 全局相似度：
 - 然后对当前task内所有support的全局embedding进行mean操作；
 - 最后计算query和support mean的embedding之间的余弦相似度；
 
+<center class ='img'>
+<img src="./user_data/pics/global.png" width="380">
+</center>
+
 b. 局部相似度：
 - 计算query的每个有效token和support的全部有效token的余弦相似度，并取最大相似度作为query中每个token的相似度；
 - 然后对query中所有有效token的相似度的均值作为当前query和support之间的相似度；
 - 最后会循环计算每个query和当前task中所有support的相似度并取均值；
 
+<center class ='img'>
+<img src="./user_data/pics/local.png" width="380">
+</center>
 最终将(全局相似度+局部相似度)/2作为最终的相似度。
 
 c.动态阈值：
